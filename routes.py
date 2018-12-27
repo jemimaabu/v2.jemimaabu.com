@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
@@ -5,19 +6,19 @@ from wtforms.validators import DataRequired, Email
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
+
 app.config.update(dict(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_USERNAME="jemimaabu@gmail.com",
-    MAIL_PASSWORD="potatoez",
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME'),
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD'),
     MAIL_DEBUG=True,
-    MAIL_SUPPRESS_SEND=False
+    MAIL_SUPPRESS_SEND=False,
+    SECRET_KEY=os.environ.get('SECRET_KEY')
 ))
 
 mail = Mail(app)
-
-app.secret_key = 'development key'
 
 
 class MyForm(FlaskForm):
