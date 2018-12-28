@@ -291,6 +291,12 @@ body.overflow-hidden {
     width: 100%;
   }
 }
+@media (max-height: 600px) {
+  .section-wrapper .about-section .intro,
+  .section-wrapper .about-section .fact {
+    top: auto;
+  }
+}
 .section-wrapper .about-section .content {
   font-family: 'Montserrat', sans-serif;
   color: white;
