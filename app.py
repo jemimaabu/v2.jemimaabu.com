@@ -1,5 +1,4 @@
 import os
-import settings
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
@@ -13,9 +12,9 @@ app.config['MAIL_PORT'] = 465
 app.config['MAIL_DEBUG'] = True
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_SUPPRESS_SEND'] = False
-app.config['MAIL_USERNAME'] = settings.MAIL_USERNAME
-app.config['MAIL_PASSWORD'] = settings.MAIL_PASSWORD
-app.config['SECRET_KEY'] = settings.SECRET_KEY
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 
 mail = Mail(app)
@@ -37,7 +36,7 @@ def root():
         msg = Message(
             'Sending file',
             sender=(form.name.data, form.email.data),
-            recipients=["jemimaabu@gmail.com"])
+            recipients=[os.environ.get('MAIL_USERNAME')])
         msg.body = "Email: " + form.email.data + "\nMessage: " + form.message.data
         msg.subject = form.subject.data
         mail.send(msg)
