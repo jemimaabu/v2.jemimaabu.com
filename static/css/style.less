@@ -279,12 +279,6 @@ body {
             padding: 5em 1em;
         }
 
-        @media (max-height: 600px) {
-            .fact {
-                top: auto;
-            }
-        }
-
         .bouncing {
             height: 100%;
             width: 100%;
@@ -321,6 +315,12 @@ body {
                 width: 100%;
             }
 
+        }
+
+        .fact {
+            @media (max-height: 600px) {
+                top: auto;
+            }
         }
         
         .content {
@@ -402,6 +402,10 @@ body {
               top: -2px;
               background: limegreen;
             }
+
+            @media(max-width: 992px) {
+                display: none;
+            }
         }
 
         .content {
@@ -414,6 +418,10 @@ body {
             &.hidden {
                  opacity: 0;
                  transform: translateY(20px);
+                 
+                 @media (max-width: 992px) {
+                     opacity: 1 !important ;
+                 }
             }
 
             @media(max-width: 992px) {

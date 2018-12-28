@@ -200,28 +200,31 @@ $(document).ready(function() {
     } 
 
     //Use scrolltimer to prevent overloading of scrolling function and use scrolllock to stop function
-    $(window).scroll(function () {
-        var windowScrollLeft = $(this).scrollLeft();
-        var windowScrollTop = $(this).scrollTop();
-        //So this 'resets' the scrollTimer to 0 if the page is scrolled
-        if (scrollTimer) {
-            clearTimeout(scrollTimer);
-        }
-
-        //If scrollLock is false, then it drawsLines after 200ms
-        if (!scrollLock) {
-            //Detect if the width of the body is wider than a section i.e. in portrait and if scrollPoint has been reached, then call drawLine function. Might be a cleaner way to do this but it's nearly midnight so I'm not tryna figure that out now.
-            //12:04am 25th December, 2018 
-            //Works in landscape but not in portrait, merry christmas to me.
-            //Should probably just rework the whole method. Might not be as complicated as I think it is.
-            //12:11am 25th December, 2018
-            //Okay I'm going to bed. This is a problem for future Jemima. Lol, enjoy.
-            if (($(document).width() > workWidth*1.5 && windowScrollLeft > workLeft-(workWidth/2)) || ($(document).height() > workHeight*1.5 && windowScrollTop > workTop - (workHeight/2))) {
-                console.log("works");
-                scrollTimer = setTimeout(drawLines, 100);
+    function drawLinesOnScroll() {
+        $(window).scroll(function () {
+            var windowScrollLeft = $(this).scrollLeft();
+            var windowScrollTop = $(this).scrollTop();
+            //So this 'resets' the scrollTimer to 0 if the page is scrolled
+            if (scrollTimer) {
+                clearTimeout(scrollTimer);
             }
-        }
-    });
+    
+            //If scrollLock is false, then it drawsLines after 200ms
+            if (!scrollLock) {
+                //Detect if the width of the body is wider than a section i.e. in portrait and if scrollPoint has been reached, then call drawLine function. Might be a cleaner way to do this but it's nearly midnight so I'm not tryna figure that out now.
+                //12:04am 25th December, 2018 
+                //Works in landscape but not in portrait, merry christmas to me.
+                //Should probably just rework the whole method. Might not be as complicated as I think it is.
+                //12:11am 25th December, 2018
+                //Okay I'm going to bed. This is a problem for future Jemima. Lol, enjoy.
+                if (($(document).width() > workWidth*1.5 && windowScrollLeft > workLeft-(workWidth/2)) || ($(document).height() > workHeight*1.5 && windowScrollTop > workTop - (workHeight/2))) {
+                    scrollTimer = setTimeout(drawLines, 100);
+                }
+            }
+        })
+    };
+
+    $(window).width() > 992 && drawLinesOnScroll();
 
     //Handle Work Slideshow
     var slideIndex = 1;
