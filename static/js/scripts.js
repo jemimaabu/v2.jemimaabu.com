@@ -159,7 +159,6 @@ $(document).ready(function() {
 
     var work = $(".work-section")
     var workLeft = work.offset().left;
-    var workTop = work.offset().top;
     var workWidth = work.width();
     var workHeight = work.height();
     var scrollLock = false;
@@ -202,7 +201,6 @@ $(document).ready(function() {
     //Use scrolltimer to prevent overloading of scrolling function and use scrolllock to stop function
     $(window).scroll(function () {
         var windowScrollLeft = $(this).scrollLeft();
-        var windowScrollTop = $(this).scrollTop();
         //So this 'resets' the scrollTimer to 0 if the page is scrolled
         if (scrollTimer) {
             clearTimeout(scrollTimer);
@@ -216,7 +214,9 @@ $(document).ready(function() {
             //Should probably just rework the whole method. Might not be as complicated as I think it is.
             //12:11am 25th December, 2018
             //Okay I'm going to bed. This is a problem for future Jemima. Lol, enjoy.
-            if (($(document).width() > workWidth*1.5 && windowScrollLeft > workLeft-(workWidth/2)) || ($(document).height() > workHeight*1.5 && windowScrollTop > workTop - (workHeight/2))) {
+            //Refactored so it only works in Desktop. Mobile is slow for reasons
+            if ($(window).width() > 992 && windowScrollLeft > workLeft-(workWidth/2)) {
+                console.log("works");
                 scrollTimer = setTimeout(drawLines, 100);
             }
         }

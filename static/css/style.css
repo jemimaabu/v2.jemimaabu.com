@@ -385,6 +385,11 @@ body.overflow-hidden {
   transform: translateY(20px);
 }
 @media (max-width: 992px) {
+  .section-wrapper .work-section .content.hidden {
+    opacity: 1;
+  }
+}
+@media (max-width: 992px) {
   .section-wrapper .work-section .content {
     width: 100%;
   }
