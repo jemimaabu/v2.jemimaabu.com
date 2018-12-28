@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template, redirect, url_for
+import settings
+from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Email
@@ -7,16 +8,15 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
-app.config.update(dict(
-    MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT=465,
-    MAIL_USE_SSL=True,
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME'),
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD'),
-    MAIL_DEBUG=True,
-    MAIL_SUPPRESS_SEND=False,
-    SECRET_KEY=os.environ.get('SECRET_KEY')
-))
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_DEBUG'] = True
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_SUPPRESS_SEND'] = False
+app.config['MAIL_USERNAME'] = settings.MAIL_USERNAME
+app.config['MAIL_PASSWORD'] = settings.MAIL_PASSWORD
+app.config['SECRET_KEY'] = settings.SECRET_KEY
+
 
 mail = Mail(app)
 
