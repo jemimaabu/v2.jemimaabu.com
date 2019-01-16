@@ -5,9 +5,9 @@ window.onbeforeunload = function () {
 
 $(document).ready(function() {
     //Hide overflow till animations are done
-    $("body").addClass("overflow-hidden")
+    $("body").addClass("overflow-hidden");
     setTimeout(function(){ 
-        $("body").removeClass("overflow-hidden") 
+        $("body").removeClass("overflow-hidden")
     }, 1000 * 14);
 
     //End animation on menu links. If not, the animation repeats after hover. Probably a better way to do this though. Research it? Lol, nah.
@@ -80,7 +80,7 @@ $(document).ready(function() {
             maxY = container.height();
         $("ball", container).each(function(i,b) {
           var ball = $(b),
-              pos = ball.position()
+              pos = ball.position(),
               x = pos.left,
               y = pos.top,
               dX = parseFloat(ball.attr("data-dX")),
@@ -92,7 +92,7 @@ $(document).ready(function() {
         });
     }
     
-    window.setInterval(moveBall,50)
+    window.setInterval(moveBall,50);
 
     $(".clear-ball").click(function() {
         container.empty();
@@ -134,12 +134,20 @@ $(document).ready(function() {
         
         if(facts.length == 0 ) {
            return ($(".about-section .fact").html("And that's all, folks!"))
-        }
+        };
 
         return ($(".about-section .fact").html(fact))
     }
     
     $(".about-section").mousedown(function() {
+        addBall();
+        factGenerator();
+        $(".about-section .content").removeClass("hidden");
+        $(".about-section .intro").html("");
+    });
+
+    $("#about a").click((e) => {
+        e.preventDefault();
         addBall();
         factGenerator();
         $(".about-section .content").removeClass("hidden");
@@ -157,7 +165,7 @@ $(document).ready(function() {
     
     //Code adapted from Maria's pen on Codepen https://codepen.io/Shorina/pen/egJmeY
 
-    var work = $(".work-section")
+    var work = $(".work-section");
     var workLeft = work.offset().left;
     var workTop = work.offset().top;
     var workWidth = work.width();
@@ -172,7 +180,7 @@ $(document).ready(function() {
             for (var i = 0; i < lines.length - 1; i++) {
                 lines[i].remove();
             }
-        }
+        };
     
         for (i=0; i < workHeight/5; i++){
             var div = $("<div />").appendTo($(".work-section"));
@@ -197,7 +205,7 @@ $(document).ready(function() {
             $(".work-section .content").removeClass("hidden");
             $(".work-section").addClass("background");
         }, 1000 * 4, scrollLock = true);
-    } 
+    }
 
     //Use scrolltimer to prevent overloading of scrolling function and use scrolllock to stop function
     function drawLinesOnScroll() {
@@ -207,7 +215,7 @@ $(document).ready(function() {
             //So this 'resets' the scrollTimer to 0 if the page is scrolled
             if (scrollTimer) {
                 clearTimeout(scrollTimer);
-            }
+            };
     
             //If scrollLock is false, then it drawsLines after 200ms
             if (!scrollLock) {
@@ -220,9 +228,9 @@ $(document).ready(function() {
                 if (($(document).width() > workWidth*1.5 && windowScrollLeft > workLeft-(workWidth/2)) || ($(document).height() > workHeight*1.5 && windowScrollTop > workTop - (workHeight/2))) {
                     scrollTimer = setTimeout(drawLines, 100);
                 }
-            }
+            };
         })
-    };
+    }
 
     $(window).width() > 992 && drawLinesOnScroll();
 
@@ -232,26 +240,26 @@ $(document).ready(function() {
     showWorksWritten(slideIndex);
 
     // Next/previous controls
-    $(".works-done .previous").click(function() {
+    $(".works-done #previous-button").click(function() {
         showWorksDone(slideIndex += -1);
     });
-    $(".works-done .next").click(function() {
+    $(".works-done #next-button").click(function() {
         showWorksDone(slideIndex += 1);
     });
-    $(".works-written .previous").click(function() {
+    $(".works-written #previous-button").click(function() {
         showWorksWritten(slideIndex += -1);
     });
-    $(".works-written .next").click(function() {
+    $(".works-written #next-button").click(function() {
         showWorksWritten(slideIndex += 1);
     });
 
     function showSlides(n, slideName) {
         const slides = $(slideName);
-        if (n > slides.length) {slideIndex = 1} 
-        if (n < 1) {slideIndex = slides.length}
+        if (n > slides.length) {slideIndex = 1};
+        if (n < 1) {slideIndex = slides.length};
         for (var i = 0; i < slides.length; i++) {
             slides[i].style.visibility = "hidden";
-        }
+        };
         slides[slideIndex-1].style.visibility = "visible";
     }
 
@@ -268,6 +276,11 @@ $(document).ready(function() {
         showSlides(n, ".works-written .work");
     }
 
+    //Using links for accessibility purposes so prevent redirect on click
+    $(".timeline a").click((e) => { 
+        e.preventDefault(); 
+     });
+
     // ----------------------------------------------------------------------
     // Contact Section
     // ----------------------------------------------------------------------
@@ -277,6 +290,6 @@ $(document).ready(function() {
       }).blur(function() {
         if( !$(this).val() ) {
             $("label").removeClass("labelfocus");
-        }
+        };
     });
 });

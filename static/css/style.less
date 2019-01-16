@@ -296,6 +296,7 @@ body {
 
         .intro, .fact {
             .serif;
+            color: inherit;
             position: absolute;
             text-align: center;
             margin: auto;
@@ -306,6 +307,7 @@ body {
             height: fit-content;
             width: 50%;
             transition: 1s;
+            text-decoration: none;
 
             &.hidden {
                 visibility: hidden
@@ -529,6 +531,7 @@ body {
                         right: 0;
                         width: 92.5%;
                         margin: auto;
+                        overflow: hidden;
     
                         @media (max-width: 992px) {
                             position: relative;
@@ -555,12 +558,6 @@ body {
                             border: 1px solid rgba(120, 200, 255, 0.2);
                             text-decoration: none;
 
-                            &:hover {
-                                .work-image {
-                                    transform: scale(1.2);
-                                }
-                            }
-
                             .work-image {
                                 width: 100%;
                                 height: 75%;
@@ -569,6 +566,23 @@ body {
     
                                 @media (max-width: 992px) {
                                     height: 40vh;
+                                }
+                            }
+
+                            .work-overlay {
+                                right: 105%;
+                                position: absolute;
+                                background-color: rgba(41, 68, 90, 0.9);
+                                width: 100%;
+                                height: 90%;
+                                color: white;
+                                padding: 0em 1em;
+                                transition: .6s;
+                            }
+
+                            &:hover, &:focus {
+                                .work-overlay {
+                                    right: 0;
                                 }
                             }
                         }
@@ -602,14 +616,15 @@ body {
                         display: none;
                     }
 
-                    .previous, .next {
-                        font-size: 2em;
+                    #previous-button, #next-button {    
+                        font-size: 2em !important;
+                        border: none;
+                        background: transparent;
+                        color: inherit;
+                        padding: 0;
+                        font: inherit;
+                        z-index: 10;
                         cursor: pointer;
-                        user-select: none;
-
-                        &.disabled {
-                            color: rgba(120, 200, 255, 0.3);
-                        }
                     }
                 }
             }
@@ -673,7 +688,8 @@ body {
                     color: rgba(120, 200, 255, 0.8);
                     border: 1px solid rgba(120, 200, 255, 0.5);
         
-                    .point {            
+                    .point {           
+                        color: inherit; 
                         position: absolute;
                         left: -2px;
                         border: 4px solid rgba(120, 200, 255, 0.5);
@@ -738,7 +754,7 @@ body {
                             left: -1em;
                         }
         
-                        &:hover {
+                        &:hover, &:focus {
                             border-color: rgba(120, 201, 255);
 
                             .point-content {
