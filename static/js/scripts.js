@@ -124,6 +124,9 @@ $(document).ready(function() {
         "My favorite movie genre is rom-coms and my favorite rom-com is About Time",
         "If I were a color, I'd either be #FFF8E7 or #101D69",
         "If I wasn't a developer, I'd like to own a bookshop (not that two are mutually exclusive)",
+        "In my spare time, I like to binge slice-of-life and/or comedy anime.",
+        "If I'm not watching anime, I'm probably reading mystery novels.",
+        "Most of my exercise these days is gotten by performing elaborate dance routines in my room.",
     ];
 
     //Get random fact from facts array
