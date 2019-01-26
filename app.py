@@ -1,9 +1,13 @@
 import os
+import markdown
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
+from flask import Markup
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Email
 from flask_mail import Mail, Message
+from flask_flatpages import FlatPages, pygments_style_defs
+from flask_frozen import Freezer
 
 app = Flask(__name__)
 
@@ -14,7 +18,17 @@ app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_SUPPRESS_SEND'] = False
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+# app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = "secret"
+
+FLATPAGES_EXTENSION = '.md'
+FLATPAGES_ROOT = 'content'
+BLOG_DIR = 'blog'
+
+
+flatpages = FlatPages(app)
+freezer = Freezer(app)
+app.config.from_object(__name__)
 
 
 mail = Mail(app)
@@ -45,5 +59,20 @@ def root():
     return render_template('index.html', form=form)
 
 
+@app.route("/blog")
+def blog():
+    blog = [p for p in flatpages if p.path.startswith(BLOG_DIR)]
+    blog.sort(key=lambda item:item['date'], reverse=False)
+    return render_template('blog.html', blog=blog)
+
+
+@app.route('/blog/<name>/')
+def post(name):
+    path = '{}/{}'.format(BLOG_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('post.html', post=post)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+

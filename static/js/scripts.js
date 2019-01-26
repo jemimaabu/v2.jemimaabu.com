@@ -33,13 +33,15 @@ $(document).ready(function() {
     //Switch between page layout
     $(".portrait").click(function(event) {
         event.preventDefault();
-        $(".section-wrapper").addClass("portrait")
+        $(".section-wrapper").addClass("portrait");
+        $(".menu").addClass("portrait");
         $("body").css("overflow", "hidden auto");
     });
 
     $(".landscape").click(function(event) {
         event.preventDefault();
         $(".section-wrapper").removeClass("portrait");
+        $(".menu").removeClass("portrait")
         $("body").css("overflow", "auto hidden");
     });
 

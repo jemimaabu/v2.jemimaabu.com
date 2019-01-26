@@ -42,6 +42,134 @@ body {
     background: #f1f1f1; 
 }
 
+.menu {
+    position: fixed;
+    top: 0;
+    display: table;
+    width: 100%;
+    padding: 1.5em;
+    box-sizing: border-box;
+    z-index: 99;
+
+    @media(min-width: 992px) {
+        .overlay {
+            display: none;
+        }
+    }
+
+    .layout-switch {
+        display: table-cell;
+        width: 50%;
+        position: relative;
+        transform: translateY(-4em);
+        animation: dropDown 500ms linear 9s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            display: none;
+        }
+
+        a {
+            .sans-serif;
+            position: absolute;
+            color: white;
+            text-decoration: none;
+
+            &.landscape {
+                display: none;
+            }
+        }
+    }
+
+    .page-links {
+        display: table-cell;
+        width: 50%;
+        text-align: right;
+
+        @media (max-width: 992px) {
+            width: 100%;
+        }
+
+        a {
+            .sans-serif;
+            color: white;
+            text-decoration: none;
+            padding-left: 1em;
+            display: inline-block;
+            transform: translateX(30em);
+            animation: slideInRight 500ms linear 1 normal forwards;
+
+            &.end-animation {
+                transform: translateX(0);
+                animation: none;
+            }
+
+            &:nth-child(1){
+                animation-delay: 10s;
+
+                @media (max-width: 992px) {
+                    animation-delay: 8.5s;
+                }
+            }
+            
+            &:nth-child(2){
+                animation-delay: 10.5s;
+
+                @media (max-width: 992px) {
+                    animation-delay: 9s;
+                }
+            }
+
+            &:nth-child(3){
+                animation-delay: 11s;
+                
+                @media (max-width: 992px) {
+                    animation-delay: 9.5s;
+                }
+            }
+
+            &:nth-child(4){
+                animation-delay: 11.5s;
+
+                @media (max-width: 992px) {
+                    animation-delay: 10s;
+                }
+            }
+
+            &:nth-child(5){
+                animation-delay: 12s;
+
+                @media (max-width: 992px) {
+                    animation-delay: 10.5s;
+                }
+            }
+
+            &:hover {
+                transform: translateX(0);
+                animation: rainbow 1s linear;
+            }
+
+        }
+    }
+
+    &.portrait {
+
+        .layout-switch {
+
+            a {
+
+                &.landscape {
+                    display: inline-block !important;
+                }
+
+                &.portrait {
+                    display: none;
+                }
+
+            }
+        }
+    }
+}
+
 .section-wrapper {
     display: flex;
     width: fit-content;
@@ -53,24 +181,6 @@ body {
 
     &.portrait {
         display: block;
-
-        .menu {
-
-            .layout-switch {
-
-                a {
-
-                    &.landscape {
-                        display: inline-block !important;
-                    }
-
-                    &.portrait {
-                        display: none;
-                    }
-
-                }
-            }
-        }
     }
 
     section {
@@ -100,107 +210,6 @@ body {
             background-color: rgba(0, 0, 0, 0.8);
             opacity: 0;
             animation: fadeIn 0s linear 5s 1 normal forwards;
-        }
-
-        .menu {
-            position: fixed;
-            display: table;
-            width: 100%;
-            padding: 1.5em;
-            box-sizing: border-box;
-            z-index: 99;
-
-            @media(min-width: 992px) {
-                .overlay {
-                    display: none;
-                }
-            }
-
-            .layout-switch {
-                display: table-cell;
-                width: 50%;
-                position: relative;
-                transform: translateY(-3em);
-                animation: dropDown 500ms linear 9s 1 normal forwards;
-
-                @media (max-width: 992px) {
-                    display: none;
-                }
-
-                a {
-                    .sans-serif;
-                    position: absolute;
-                    color: white;
-                    text-decoration: none;
-
-                    &.landscape {
-                        display: none;
-                    }
-                }
-            }
-
-            .page-links {
-                display: table-cell;
-                width: 50%;
-                text-align: right;
-
-                @media (max-width: 992px) {
-                    width: 100%;
-                }
-
-                a {
-                    .sans-serif;
-                    color: white;
-                    text-decoration: none;
-                    padding-left: 1em;
-                    display: inline-block;
-                    transform: translateX(20em);
-                    animation: slideInRight 500ms linear 1 normal forwards;
-
-                    &.end-animation {
-                        transform: translateX(0);
-                        animation: none;
-                    }
-
-                    &:nth-child(1){
-                        animation-delay: 10.5s;
-
-                        @media (max-width: 992px) {
-                            animation-delay: 9s;
-                        }
-                    }
-                    
-                    &:nth-child(2){
-                        animation-delay: 11s;
-
-                        @media (max-width: 992px) {
-                            animation-delay: 9.5s;
-                        }
-                    }
-
-                    &:nth-child(3){
-                        animation-delay: 11.5s;
-                        
-                        @media (max-width: 992px) {
-                            animation-delay: 10s;
-                        }
-                    }
-
-                    &:nth-child(4){
-                        animation-delay: 12s;
-
-                        @media (max-width: 992px) {
-                            animation-delay: 10.5s;
-                        }
-                    }
-
-                    &:hover {
-                        transform: translateX(0);
-                        animation: rainbow 1s linear;
-                    }
-
-                }
-            }
         }
 
         .content {
@@ -994,7 +1003,7 @@ footer {
 }
 
 @keyframes slideInRight {
-    from {transform: translateX(20em)}
+    from {transform: translateX(30em)}
     to {transform: translateX(0)}
 }
 
