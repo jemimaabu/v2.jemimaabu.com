@@ -16,23 +16,24 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/blog.css') }}" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab|Exo+2:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,300,200italic,200,100italic,100" rel="stylesheet">
         <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon"/>
         <title>Jemima Abu's Blog</title>
     </head>
     <body>
         <header>
-            <h1>Jemima Abu's Blog</h1>
-            <h2>A collection of my thoughts, ramblings, and sometimes I write about things I know about.</h2>
+            <div class="header-caption">
+                <h1 class="neon">Jemima Abu's Blog</h1>
+                <h2>A collection of my thoughts, ramblings, and sometimes I write about things I know about.</h2>
+            </div>
         </header>
         <main>
             {% for post in blog %}
                 <div class="blog-post">
                     <a href="{{ url_for('post', name=post.path.replace('blog/', '')) }}">
                         <h3>{{ post.title }}</h3>
+                        <p>{{ post.description }}</p>
+                        <small>{{ post.date }}</small>
                     </a>
-                    <p>{{ post.description }}</p>
-                    <small>{{ post.date }}</small>
                 </div>
             {% endfor %}
         </main>

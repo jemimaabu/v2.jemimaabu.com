@@ -1,8 +1,6 @@
 import os
-import markdown
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
-from flask import Markup
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Email
 from flask_mail import Mail, Message
@@ -62,7 +60,7 @@ def root():
 @app.route("/blog")
 def blog():
     blog = [p for p in flatpages if p.path.startswith(BLOG_DIR)]
-    blog.sort(key=lambda item:item['date'], reverse=False)
+    blog.sort(key=lambda item: item['date'], reverse=False)
     return render_template('blog.html', blog=blog)
 
 
