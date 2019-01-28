@@ -42,6 +42,130 @@ body {
     background: #f1f1f1; 
 }
 
+.skip-animation {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    cursor: pointer;
+}
+
+.animate {
+    &.one {
+        opacity: 0;
+        animation: fadeIn 0s linear 5s 1 normal forwards;
+    }
+
+    &.two{
+        transform: translateX(-100%);
+        animation: slideInLeft 1s linear 4.5s 1 normal forwards;
+    }
+
+    &.three{
+        transform: translateX(-100%);
+        animation: slideInLeft 1s linear 5.5s 1 normal forwards;
+    }
+
+    &.four {
+        opacity: 0;
+        animation: fadeInUp 500ms linear 6.5s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation: none;
+        }
+    }
+
+    &.five {
+        opacity: 0;
+        animation: fadeInUp 500ms linear 7.5s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation: none;
+        }
+    }
+
+    &.six{
+        transform: translateY(-4em);
+        animation: dropDown 500ms linear 8.5s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation-delay: 6.5s;
+        }
+    }
+
+    &.seven{
+        opacity: 0;
+        animation: fadeInUp 500ms linear 9.5s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation-delay: 7.5s;
+        }
+    }
+
+    &.eight{
+        transform: translateX(30em);
+        animation: slideInRight 500ms linear 10.5s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation-delay: 8.5s;
+        }
+    }
+
+    &.nine{
+        transform: translateX(30em);
+        animation: slideInRight 500ms linear 11s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation-delay: 9s;
+        }
+    }
+
+    &.ten{
+        transform: translateX(30em);
+        animation: slideInRight 500ms linear 11.5s 1 normal forwards;
+        
+        @media (max-width: 992px) {
+            animation-delay: 9.5s;
+        }
+    }
+
+    &.eleven{
+        transform: translateX(30em);
+        animation: slideInRight 500ms linear 12s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation-delay: 10s;
+        }
+    }
+
+    &.twelve{
+        transform: translateX(30em);
+        animation: slideInRight 500ms linear 12.5s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation-delay: 10.5s;
+        }
+    }
+
+    &.thirteen{
+        opacity: 0;
+        animation: fadeInUp 500ms linear 13.5s 1 normal forwards;
+
+        @media (max-width: 992px) {
+            animation-delay: 11.5s;
+        }
+    }
+
+    &.fourteen { 
+        transform: translateY(8vmin);
+        animation: slideUp 500ms linear 14s 1 normal forwards;
+    
+        @media(max-width: 992px) {
+            transform: translateY(8vmax);
+            animation-delay: 12s;
+        }
+    }
+}
+
 .menu {
     position: fixed;
     top: 0;
@@ -51,6 +175,16 @@ body {
     box-sizing: border-box;
     z-index: 99;
 
+    .overlay {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: -1;
+    }
+    
     @media(min-width: 992px) {
         .overlay {
             display: none;
@@ -61,8 +195,6 @@ body {
         display: table-cell;
         width: 50%;
         position: relative;
-        transform: translateY(-4em);
-        animation: dropDown 500ms linear 9s 1 normal forwards;
 
         @media (max-width: 992px) {
             display: none;
@@ -95,52 +227,10 @@ body {
             text-decoration: none;
             padding-left: 1em;
             display: inline-block;
-            transform: translateX(30em);
-            animation: slideInRight 500ms linear 1 normal forwards;
 
             &.end-animation {
                 transform: translateX(0);
                 animation: none;
-            }
-
-            &:nth-child(1){
-                animation-delay: 10s;
-
-                @media (max-width: 992px) {
-                    animation-delay: 8.5s;
-                }
-            }
-            
-            &:nth-child(2){
-                animation-delay: 10.5s;
-
-                @media (max-width: 992px) {
-                    animation-delay: 9s;
-                }
-            }
-
-            &:nth-child(3){
-                animation-delay: 11s;
-                
-                @media (max-width: 992px) {
-                    animation-delay: 9.5s;
-                }
-            }
-
-            &:nth-child(4){
-                animation-delay: 11.5s;
-
-                @media (max-width: 992px) {
-                    animation-delay: 10s;
-                }
-            }
-
-            &:nth-child(5){
-                animation-delay: 12s;
-
-                @media (max-width: 992px) {
-                    animation-delay: 10.5s;
-                }
             }
 
             &:hover {
@@ -208,8 +298,6 @@ body {
             top: 0;
             left: 0;
             background-color: rgba(0, 0, 0, 0.8);
-            opacity: 0;
-            animation: fadeIn 0s linear 5s 1 normal forwards;
         }
 
         .content {
@@ -224,7 +312,7 @@ body {
             @media (max-width: 992px) {
                 width: 100%;
 
-                .third, .fourth {
+                p.four, p.five {
                     display: none;
                 }
             }
@@ -236,44 +324,6 @@ body {
             p {
                 .sans-serif;
             }
-
-            .first,.second {
-                transform: translateX(-100%);
-                animation: slideInLeft 1s linear 1 normal forwards;
-            }
-
-            .third,.fourth,.fifth,.sixth {
-                opacity: 0;
-                animation: fadeInUp 500ms linear 1 normal forwards
-            }
-
-            .first {
-                animation-delay: 4.5s
-            }
-            .second {
-                animation-delay: 5.5s;
-
-                @media (max-width: 992px) {
-                    animation-delay: 6.5s;
-                }
-            }
-            .third {
-                animation-delay: 6.5s
-            }
-            .fourth {
-                animation-delay: 7.5s
-            }
-            .fifth {
-                animation-delay: 10s;
-
-                @media (max-width: 992px) {
-                    animation-delay: 8.5s;
-                }
-            }
-            .sixth {
-                animation-delay: 12.5s;
-            }
-
         }
         
     }
@@ -865,12 +915,9 @@ footer {
     width: 100vw;
     height: 8vmin;
     background-color: black;
-    transform: translateY(8vmin);
-    animation: slideUp 500ms linear 13s 1 normal forwards;
-
+    
     @media(max-width: 992px) {
         height: 8vmax;
-        transform: translateY(8vmax);
     }
 
     .links-wrapper {    
@@ -1023,5 +1070,4 @@ footer {
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
       filter: alpha(opacity=100);
     }
-  }
-  
+}  

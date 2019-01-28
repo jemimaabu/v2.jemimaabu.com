@@ -7,8 +7,21 @@ $(document).ready(function() {
     //Hide overflow till animations are done
     $("body").addClass("overflow-hidden");
     setTimeout(function(){ 
-        $("body").removeClass("overflow-hidden")
+        $("body").removeClass("overflow-hidden");
     }, 1000 * 14);
+    setTimeout(function() {
+        $(".skip-animation").css("display","none")
+    }, 1000 * 10);
+
+    function skipAnimation() {
+        $(".animate").removeClass("animate");
+        $("body").removeClass("overflow-hidden");
+        $(".skip-animation").css("display","none")
+    }
+
+    $(".skip-animation").click(() => {
+        skipAnimation();
+    });
 
     //End animation on menu links. If not, the animation repeats after hover. Probably a better way to do this though. Research it? Lol, nah.
     setTimeout(function(){ $(".page-links a").addClass("end-animation")}, 1000 * 13);

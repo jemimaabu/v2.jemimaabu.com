@@ -35,6 +35,124 @@ body.overflow-hidden {
 ::-webkit-scrollbar-thumb:hover {
   background: #f1f1f1;
 }
+.skip-animation {
+  position: absolute;
+  z-index: 99;
+  right: 0;
+  cursor: pointer;
+}
+.animate.one {
+  opacity: 0;
+  animation: fadeIn 0s linear 5s 1 normal forwards;
+}
+.animate.two {
+  transform: translateX(-100%);
+  animation: slideInLeft 1s linear 4.5s 1 normal forwards;
+}
+.animate.three {
+  transform: translateX(-100%);
+  animation: slideInLeft 1s linear 5.5s 1 normal forwards;
+}
+.animate.four {
+  opacity: 0;
+  animation: fadeInUp 500ms linear 6.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.four {
+    animation: none;
+  }
+}
+.animate.five {
+  opacity: 0;
+  animation: fadeInUp 500ms linear 7.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.five {
+    animation: none;
+  }
+}
+.animate.six {
+  transform: translateY(-4em);
+  animation: dropDown 500ms linear 8.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.six {
+    animation-delay: 6.5s;
+  }
+}
+.animate.seven {
+  opacity: 0;
+  animation: fadeInUp 500ms linear 9.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.seven {
+    animation-delay: 7.5s;
+  }
+}
+.animate.eight {
+  transform: translateX(30em);
+  animation: slideInRight 500ms linear 10.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.eight {
+    animation-delay: 8.5s;
+  }
+}
+.animate.nine {
+  transform: translateX(30em);
+  animation: slideInRight 500ms linear 11s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.nine {
+    animation-delay: 9s;
+  }
+}
+.animate.ten {
+  transform: translateX(30em);
+  animation: slideInRight 500ms linear 11.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.ten {
+    animation-delay: 9.5s;
+  }
+}
+.animate.eleven {
+  transform: translateX(30em);
+  animation: slideInRight 500ms linear 12s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.eleven {
+    animation-delay: 10s;
+  }
+}
+.animate.twelve {
+  transform: translateX(30em);
+  animation: slideInRight 500ms linear 12.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.twelve {
+    animation-delay: 10.5s;
+  }
+}
+.animate.thirteen {
+  opacity: 0;
+  animation: fadeInUp 500ms linear 13.5s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.thirteen {
+    animation-delay: 11.5s;
+  }
+}
+.animate.fourteen {
+  transform: translateY(8vmin);
+  animation: slideUp 500ms linear 14s 1 normal forwards;
+}
+@media (max-width: 992px) {
+  .animate.fourteen {
+    transform: translateY(8vmax);
+    animation-delay: 12s;
+  }
+}
 .menu {
   position: fixed;
   top: 0;
@@ -43,6 +161,15 @@ body.overflow-hidden {
   padding: 1.5em;
   box-sizing: border-box;
   z-index: 99;
+}
+.menu .overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
 }
 @media (min-width: 992px) {
   .menu .overlay {
@@ -53,8 +180,6 @@ body.overflow-hidden {
   display: table-cell;
   width: 50%;
   position: relative;
-  transform: translateY(-4em);
-  animation: dropDown 500ms linear 9s 1 normal forwards;
 }
 @media (max-width: 992px) {
   .menu .layout-switch {
@@ -86,52 +211,10 @@ body.overflow-hidden {
   text-decoration: none;
   padding-left: 1em;
   display: inline-block;
-  transform: translateX(30em);
-  animation: slideInRight 500ms linear 1 normal forwards;
 }
 .menu .page-links a.end-animation {
   transform: translateX(0);
   animation: none;
-}
-.menu .page-links a:nth-child(1) {
-  animation-delay: 10s;
-}
-@media (max-width: 992px) {
-  .menu .page-links a:nth-child(1) {
-    animation-delay: 8.5s;
-  }
-}
-.menu .page-links a:nth-child(2) {
-  animation-delay: 10.5s;
-}
-@media (max-width: 992px) {
-  .menu .page-links a:nth-child(2) {
-    animation-delay: 9s;
-  }
-}
-.menu .page-links a:nth-child(3) {
-  animation-delay: 11s;
-}
-@media (max-width: 992px) {
-  .menu .page-links a:nth-child(3) {
-    animation-delay: 9.5s;
-  }
-}
-.menu .page-links a:nth-child(4) {
-  animation-delay: 11.5s;
-}
-@media (max-width: 992px) {
-  .menu .page-links a:nth-child(4) {
-    animation-delay: 10s;
-  }
-}
-.menu .page-links a:nth-child(5) {
-  animation-delay: 12s;
-}
-@media (max-width: 992px) {
-  .menu .page-links a:nth-child(5) {
-    animation-delay: 10.5s;
-  }
 }
 .menu .page-links a:hover {
   transform: translateX(0);
@@ -181,8 +264,6 @@ body.overflow-hidden {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  animation: fadeIn 0s linear 5s 1 normal forwards;
 }
 .section-wrapper .home-section .content {
   position: absolute;
@@ -197,8 +278,8 @@ body.overflow-hidden {
   .section-wrapper .home-section .content {
     width: 100%;
   }
-  .section-wrapper .home-section .content .third,
-  .section-wrapper .home-section .content .fourth {
+  .section-wrapper .home-section .content p.four,
+  .section-wrapper .home-section .content p.five {
     display: none;
   }
 }
@@ -210,46 +291,6 @@ body.overflow-hidden {
 .section-wrapper .home-section .content p {
   font-family: 'Montserrat', sans-serif;
   color: white;
-}
-.section-wrapper .home-section .content .first,
-.section-wrapper .home-section .content .second {
-  transform: translateX(-100%);
-  animation: slideInLeft 1s linear 1 normal forwards;
-}
-.section-wrapper .home-section .content .third,
-.section-wrapper .home-section .content .fourth,
-.section-wrapper .home-section .content .fifth,
-.section-wrapper .home-section .content .sixth {
-  opacity: 0;
-  animation: fadeInUp 500ms linear 1 normal forwards;
-}
-.section-wrapper .home-section .content .first {
-  animation-delay: 4.5s;
-}
-.section-wrapper .home-section .content .second {
-  animation-delay: 5.5s;
-}
-@media (max-width: 992px) {
-  .section-wrapper .home-section .content .second {
-    animation-delay: 6.5s;
-  }
-}
-.section-wrapper .home-section .content .third {
-  animation-delay: 6.5s;
-}
-.section-wrapper .home-section .content .fourth {
-  animation-delay: 7.5s;
-}
-.section-wrapper .home-section .content .fifth {
-  animation-delay: 10s;
-}
-@media (max-width: 992px) {
-  .section-wrapper .home-section .content .fifth {
-    animation-delay: 8.5s;
-  }
-}
-.section-wrapper .home-section .content .sixth {
-  animation-delay: 12.5s;
 }
 .section-wrapper .about-section {
   background-color: black;
@@ -815,13 +856,10 @@ footer {
   width: 100vw;
   height: 8vmin;
   background-color: black;
-  transform: translateY(8vmin);
-  animation: slideUp 500ms linear 13s 1 normal forwards;
 }
 @media (max-width: 992px) {
   footer {
     height: 8vmax;
-    transform: translateY(8vmax);
   }
 }
 footer .links-wrapper {
