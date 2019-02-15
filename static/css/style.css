@@ -850,6 +850,23 @@ body.overflow-hidden {
 .section-wrapper .contact-section form #submit:hover {
   animation: rainbowBackground 2.5s linear infinite;
 }
+.section-wrapper .contact-section .temp-form p {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+.section-wrapper .contact-section .temp-form a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  transition: 0.3s;
+}
+.section-wrapper .contact-section .temp-form a:first-of-type:hover {
+  color: #DB4437;
+}
+.section-wrapper .contact-section .temp-form a:last-of-type:hover {
+  color: #1DA1F2;
+}
 footer {
   position: fixed;
   bottom: 0;
