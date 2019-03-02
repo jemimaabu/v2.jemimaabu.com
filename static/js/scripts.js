@@ -222,7 +222,7 @@ $(document).ready(function() {
             $(".line").remove();
             $(".work-section .content").removeClass("hidden");
             $(".work-section").addClass("background");
-        }, 1000 * 4, scrollLock = true);
+        }, 1000 * 2, scrollLock = true);
     }
 
     //Use scrolltimer to prevent overloading of scrolling function and use scrolllock to stop function
