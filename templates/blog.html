@@ -21,6 +21,9 @@
     </head>
     <body>
         <header>
+            <div class="website-link">
+                <a href="/">Back to website</a>
+            </div>
             <div class="header-caption">
                 <h1 class="neon">Jemima Abu's Blog</h1>
                 <h2>A collection of my thoughts, ramblings, and sometimes I write about things I know about.</h2>
@@ -30,7 +33,7 @@
             {% for post in blog %}
                 <div class="blog-post">
                     <a href="{{ url_for('post', name=post.path.replace('blog/', '')) }}">
-                        <h3>{{ post.title }}</h3>
+                        <h3 class="post-link">{{ post.title }}</h3>
                         <p>{{ post.description }}</p>
                         <small>{{ post.date }}</small>
                     </a>
