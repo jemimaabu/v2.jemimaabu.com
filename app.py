@@ -1,4 +1,5 @@
 import os
+import requests
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
@@ -9,15 +10,18 @@ from flask_frozen import Freezer
 
 app = Flask(__name__)
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_DEBUG'] = True
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_SUPPRESS_SEND'] = False
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+# app.config['MAIL_SERVER'] = 'smtp.mailgun.org'
+# app.config['MAIL_PORT'] = 587
+# app.config['MAIL_DEBUG'] = True
+# app.config['MAIL_USE_SSL'] = True
+# app.config['MAIL_SUPPRESS_SEND'] = False
+# app.config['MAIL_USERNAME'] = 'postmaster@sandbox212ba39fba0f4cd99214a881a5db6bcd.mailgun.org'
+# app.config['MAIL_PASSWORD'] = 'aaa434a86fff147674fe4f2a8e07d509-1b65790d-a2ba2bff'
 # app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['SECRET_KEY'] = "secret"
+
+apikey="4758595800fe577e1f9608e15917716d-1b65790d-7c8d4065"
+url="https://api.mailgun.net/v3/sandbox212ba39fba0f4cd99214a881a5db6bcd.mailgun.org"
 
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
@@ -45,13 +49,20 @@ def root():
     form = MyForm()
 
     if form.validate_on_submit():
-        msg = Message(
-            'Sending file',
-            sender=(form.name.data, form.email.data),
-            recipients=[os.environ.get('MAIL_USERNAME')])
-        msg.body = "Email: " + form.email.data + "\nMessage: " + form.message.data
-        msg.subject = form.subject.data
-        mail.send(msg)
+        requests.post(url,
+                      auth=("api", apikey),
+                      data={"from": "testing@test.com",
+                            "to": ["jemimaabu@gmail.com"],
+                            "subject": "New Contact Entry",
+                            "text": "Test"}
+                      )
+        # requests.post(url,
+        #   auth=("api", api),
+        #   data={"from": (form.name.data, form.email.data),
+        #         "to": "jemimaabu@gmail.com",
+        #         "subject": form.subject.data,
+        #         "text": form.message.data}
+        #   )
         return redirect('')
 
     return render_template('index.html', form=form)
