@@ -1,10 +1,5 @@
-import os
-from flask import Flask, render_template, redirect
-from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField
-from wtforms.validators import DataRequired, Email
-from flask_mail import Mail, Message
-from flask_flatpages import FlatPages, pygments_style_defs
+from flask import Flask, render_template
+from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 
 app = Flask(__name__)
@@ -19,17 +14,6 @@ BLOG_DIR = 'blog'
 flatpages = FlatPages(app)
 freezer = Freezer(app)
 app.config.from_object(__name__)
-
-
-mail = Mail(app)
-
-
-class MyForm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired(), Email()])
-    subject = StringField("Subject", validators=[DataRequired()])
-    message = TextAreaField("Message", validators=[DataRequired()])
-    submit = SubmitField("Send")
 
 
 @app.route('/', methods=['GET', 'POST'])

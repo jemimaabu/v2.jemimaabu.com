@@ -42,6 +42,7 @@ $(document).ready(function() {
     scrollTo(".about-link", ".about-section");
     scrollTo(".work-link", ".work-section");
     scrollTo(".contact-link", ".contact-section");
+    scrollTo(".projects-link", ".projects-section");
 
     //Switch between page layout
     $(".portrait").click(function(event) {
