@@ -515,8 +515,6 @@ body {
                     text-decoration: none;
                     color: white;
                     padding: 0.1em;
-                    border: 1px solid rgba(120, 200, 255, 0.2);
-                    background-color: rgba(120, 200, 255, 0.6);
                     transition: .3s;
                     
                     @media(max-width: 992px) {
@@ -530,9 +528,7 @@ body {
                     }
 
                     &:hover {
-                        background-color: rgba(120, 200, 255, 0.2);
-                        border: 1px solid rgba(120, 200, 255, 0.5);
-                        box-shadow: inset 0 0 0 1px rgba(120, 200, 255, 0.3);
+                        border-bottom: 1px solid rgba(120, 200, 255, 0.5);
                         color: rgba(120, 200, 255, 0.8);
                     }
                 }
@@ -890,107 +886,41 @@ body {
 
     .contact-section{
         padding: 5em 3em;
-        
-        @media(max-width: 992px) {
-            padding: 5em 1em;
-        }
+        position: relative;
 
-        .form-error {
-            color: #cc0000;
+        .content {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            height: fit-content;
+            width: 75%;
 
-            label {
-                text-transform: capitalize;
-            }
-        }
-
-        form {
-            padding: 1em 0 0;
-
-            label {
-                .serif;
-                display: inline-block;
-                margin-bottom: -5em;
-                font-size: .8em;
-                opacity: 0.2;
-                display: inline-block;
-                transition: all 0.5s;
-
-                &.labelfocus {
-                    margin-bottom: 0;
-                    font-size: 1em;
-                    opacity: 1;
-                }
-            }
-
-            input {
-                .serif;
+            @media (max-width: 992px) {
                 width: 100%;
-                color: white;
-                background-color: transparent;
-                border-bottom: 1px solid;
-                border-image: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3) 100% 1;
-                border-top: transparent;
-                margin-bottom: 2em;
-            }
-    
-            textarea {
-                width: 100%;
-                height: 40%;
-                color: white;
-                background-color: transparent;
-                border-bottom: 1px solid;
-                border-image: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #9400D3) 100% 1;
-                border-top: transparent;
-                resize: none;
-
-                @media (max-width: 992px) {
-                    height: 40vh;
-                }
             }
 
-            #submit {
-                width: 10em;
-                margin: 2.5em 0 0;
-                cursor: pointer;
-                padding: 1em 2em;
-                background-image: linear-gradient(to right, #FC4F4F 0%, #FFCF00 35%, #00C0FF 70%, #FC4F4F 100% );
-                border: none;
-
-                @media (max-width: 992px) {
-                    width: 100%;
-                }
-
-                &:hover {
-                    animation: rainbowBackground 2.5s linear infinite;
-                }
-            }
-        }
-
-        .temp-form {
-            p {
-                .sans-serif;
+            h1 {
+                .serif;
+                margin-bottom: .67em;
             }
 
             a {
-                color: inherit;
-                font: inherit;
+                .sans-serif;
+                color: white;
+                padding: 1em;
+                border: 1px white solid;
                 text-decoration: none;
-                border-bottom: 1px solid;
-                transition: .3s;
+                min-width: 15em;
+                transition: .5s;
+                display: inline-block;
+                margin-bottom: 1em;
 
-                &:first-of-type {
-
-                    &:hover {
-                        color: #DB4437
-                    }
+                &:hover {
+                    background-color: white;
+                    color: black;
                 }
 
-                &:last-of-type {
-
-                    &:hover {
-                        color: #1DA1F2
-                    }
-                }
             }
         }
     }
