@@ -112,6 +112,15 @@ input:checked + .toggle:before {
   text-align: center;
 }
 
+.recent-posts li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.recent-posts li a:hover {
+  color: var(--blue-acc);
+}
+
 main {
   width: 70%;
   float: right;
@@ -165,9 +174,9 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  border-top: 1px solid var(--main-color);
   padding: 1em;
   text-align: center;
+  border-top: 0.5px solid var(--main-color);
 }
 
 footer a {
@@ -178,6 +187,7 @@ footer a {
 @media (max-width: 992px) {
   body {
     padding: 2em;
+    position: relative;
   }
 
   aside {

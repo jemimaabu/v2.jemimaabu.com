@@ -48,7 +48,8 @@
       <ul>
         {% for post in blog %}
         <li>
-          {{ post.title }}
+          <a href="{{ url_for('post', name=post.path.replace('blog/', '')) }}">
+            {{ post.title }}</a>
         </li>
         {% endfor %}
       </ul>
@@ -66,10 +67,11 @@
     {% endfor %}
   </main>
   <footer>
-    Built by <a href="/">Jemima</a> &copy; 2019
+    Built by <a href="/">Jemima Abu</a> &copy; 2019
   </footer>
 </body>
 <script src="{{ url_for('static', filename='js/blog.js') }}"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
 </html>
