@@ -97,6 +97,10 @@ aside .blog-logo {
   border-radius: 50%;
 }
 
+input:focus + .toggle {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
 input:checked + .toggle:before {
   -webkit-transform: translateX(2em);
   -ms-transform: translateX(2em);
@@ -109,8 +113,9 @@ input:checked + .toggle:before {
 }
 
 main {
-  width: 65%;
+  width: 70%;
   float: right;
+  padding: 1em;
 }
 
 .blog-post {
@@ -156,6 +161,21 @@ nav a {
 
 nav a:hover {
   color: var(--blue-acc)
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--main-color);
+  padding: 1em;
+  text-align: center;
+}
+
+footer a {
+  color: var(--blue-acc);
+  text-decoration: none;
 }
 
 @media (max-width: 992px) {
