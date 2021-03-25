@@ -582,7 +582,7 @@ body.overflow-hidden {
 .section-wrapper .work-section .content .works-done .works-container .work .image-link .work-image,
 .section-wrapper .work-section .content .works-written .works-container .work .image-link .work-image {
   width: 100%;
-  height: 75%;
+  height: 26vh;
   object-fit: cover;
   object-position: top;
   transition: 0.5s;
